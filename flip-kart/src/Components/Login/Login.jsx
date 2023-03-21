@@ -37,11 +37,15 @@ export function Login() {
   const [incorrect, setIncorrect] = useState(0)
   // const [correct, setCorrect] = useState(0)
   const {correct, setCorrect} = useContext(Authcontext)
+  
+   
+   
   console.log(correct," check correct in login ");
   // const [otpvalue, setOtpValue] = useState(false)
   let loginsetName = JSON.parse(localStorage.getItem("loginsetName")) || "Login"
   const [name, setName] = useState(loginsetName)
   localStorage.setItem("loginsetName", JSON.stringify(name));
+  console.log(name)
 
   let otp
   let raj = 0
@@ -62,15 +66,18 @@ export function Login() {
   const handleChange = (inp) => {
     const { name, value } = inp.target
     setInputValues({ ...inputValues, [name]: value })
-    // console.log(inputValues)
+    
   }
-
+ 
+  
   const handlelogin = (inputValues) => {
+    
     fetch(`https://flipkart-data.onrender.com/Userdetails`)
       .then((res) => res.json())
       .then((res) => {
         console.log(res, " check res in 67");
         let test2  = res.filter((el) => {
+          
           return el.email === inputValues.email &&
             el.password === inputValues.password
         })
@@ -87,6 +94,7 @@ export function Login() {
       .catch((err) => {
         console.log(err)
       })
+   
   }
 
   const notify = () => {
@@ -190,7 +198,7 @@ export function Login() {
         <Text p='4px' bg='#2874f0' color={'#fff'} border='0' textAlign="center" fontSize={'15px'}
                 fontWeight="700"
                 cursor="pointer"
-              >Login</Text>
+              >Login </Text>
         :
         <Text p='4px 30px' _hover={{bg:""}} textAlign="center" fontSize={'15px'} onClick={onOpen}
         bg="white"

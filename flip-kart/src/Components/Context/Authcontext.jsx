@@ -9,6 +9,7 @@ const AuthContextProvider = ({ children }) => {
     const [correct, setCorrect] = useState(loginCheck)
 
     localStorage.setItem("loginCheck", JSON.stringify(correct));
+    console.log(loginCheck)
     // console.log(correct, " test corret ");
     // const [isAuth, setIsAuth] = useState(false);
   
